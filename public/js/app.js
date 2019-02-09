@@ -48514,6 +48514,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./dragon20 */ "./resources/js/dragon20.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -48593,6 +48595,23 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/dragon20.js":
+/*!**********************************!*\
+  !*** ./resources/js/dragon20.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(function () {
+    {
+      console.log('SW registered');
+    }
+  });
+}
 
 /***/ }),
 

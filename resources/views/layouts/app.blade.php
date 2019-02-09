@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Manifest -->
+    <link href="{{ asset('/manifest.json') }}" rel="manifest">
 </head>
 <body>
     <div id="app">
