@@ -7,6 +7,10 @@ self.addEventListener('install', function (event) {
                     '/',
                     '/js/app.js',
                     '/css/app.css',
+                    '/favicon.ico',
+                    '/manifest.json',
+                    'https://fonts.googleapis.com/css?family=Nunito',
+                    'https://fonts.gstatic.com/s/nunito/v9/XRXV3I6Li01BKofINeaB.woff',
                 ]);
             })
     );
@@ -18,13 +22,26 @@ self.addEventListener('activate', function () {
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
-            .then(function(res) {
-                if (res) {
-                    return res;
-                } else {
-                    return fetch(event.request);
-                }
+        caches.open('static').then(function(cache) {
+            return cache.match(event.request).then(function (response) {
+                var fetchPromise = fetch(event.request).then(function (networkResponse) {
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                });
+                return response || fetchPromise;
             })
+        })
+
+
+        // caches.match(event.request)
+        //     .then(function(res) {
+        //         let request = fetch(event.request).then(function (response) {
+        //             return response;
+        //         });
+        //
+        //         if (res) {
+        //             return res;
+        //         }
+        //     })
     );
 });

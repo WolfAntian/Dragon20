@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>This is my body content.</p>
+    @component('components.summary')
+    @endcomponent
 @endsection
