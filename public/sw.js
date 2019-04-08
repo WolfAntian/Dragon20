@@ -31,17 +31,5 @@ self.addEventListener('fetch', function(event) {
                 return response || fetchPromise;
             })
         })
-
-
-        // caches.match(event.request)
-        //     .then(function(res) {
-        //         let request = fetch(event.request).then(function (response) {
-        //             return response;
-        //         });
-        //
-        //         if (res) {
-        //             return res;
-        //         }
-        //     })
     );
 });
